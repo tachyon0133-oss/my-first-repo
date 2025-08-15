@@ -23,6 +23,6 @@ jobs:
 
     - name: Run bot
       run: |
-        python your_script.py
+        python testrank.py
       env:
         DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL_TEST }}
