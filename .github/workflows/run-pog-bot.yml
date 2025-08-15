@@ -2,7 +2,8 @@ name: Daily POG Discord Bot
 
 on:
   schedule:
-    - cron: '30 4 * * *'  # 毎日 9:00 JST（= 0:00 UTC）
+    - cron: '35 4 * * *'  # 毎日 9:00 JST（= 0:00 UTC）
+    - cron: '40 4 * * *'  # 毎日 9:00 JST（= 0:00 UTC）
   workflow_dispatch:
 
 jobs:
