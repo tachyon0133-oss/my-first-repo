@@ -14,7 +14,7 @@ WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL_TEST")
 
 # --- 3. セッションとページ取得（ログインなし前提） ---
 session = requests.Session()
-pog_group_url = os.getenv("pog_group_url")
+pog_group_url = os.getenv("POG_GROUP_URL")
 r = session.get(pog_group_url)
 r.raise_for_status()
 
