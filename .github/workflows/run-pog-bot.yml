@@ -1,0 +1,28 @@
+name: Daily POG Discord Bot
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 毎日 9:00 JST（= 0:00 UTC）
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run bot
+      run: |
+        python your_script.py
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
