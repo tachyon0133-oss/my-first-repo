@@ -10,7 +10,7 @@ GROUPS = {
 }
 
 # --- 2. Discord Webhook（環境変数から取得推奨） ---
-WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL_TEST")
+WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 print("Webhook URL:", WEBHOOK_URL)
 print("POSTメッセージ送信テスト")
 res = requests.post(WEBHOOK_URL, json={"content": "Discord通知テストです！"})
