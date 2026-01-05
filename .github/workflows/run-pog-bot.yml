@@ -2,7 +2,7 @@ name: Daily POG Discord Bot
 
 on:
   schedule:
-    - cron: '0 11 * * 1'
+    - cron: '0 10 * * 2'
   workflow_dispatch:
 
 jobs:
