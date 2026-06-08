@@ -77,7 +77,7 @@ result_gr_text = "\n".join([result_text,result_gr_lines])
 
 # --- 8. Discord通知 ---
 if WEBHOOK_URL:
-    requests.post(WEBHOOK_URL, json={"content": result_text})
-    print("✅ Discordへ送信しました:\n", result_text)
+    requests.post(WEBHOOK_URL, json={"content": result_gr_text})
+    print("✅ Discordへ送信しました:\n", result_gr_text)
 else:
-    print("⚠️ Webhook URLが未設定です。出力のみ行います：\n", result_text)
+    print("⚠️ Webhook URLが未設定です。出力のみ行います：\n", result_gr_text)
