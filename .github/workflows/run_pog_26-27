@@ -1,4 +1,4 @@
-name: Daily POG Discord Bot
+name: Daily Group POG Discord Bot
 
 on:
   schedule:
