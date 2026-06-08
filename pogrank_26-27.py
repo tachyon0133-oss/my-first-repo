@@ -16,7 +16,7 @@ TEAMS = {
 }
 
 # --- 2. Discord Webhook（環境変数から取得推奨） ---
-WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL_TEST")
+WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 # --- 3. セッションとページ取得（ログインなし前提） ---
 session = requests.Session()
