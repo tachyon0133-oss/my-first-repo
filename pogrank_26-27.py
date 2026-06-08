@@ -43,6 +43,23 @@ for row in rows:
             except ValueError:
                 point = 0.0
             earnings[member_name] = point
+
+# --- 5-1. グループ枠とポイント（賞金）をテーブルから抽出 ---
+earnings_gr = {}
+rows = soup.select("table.list_table tbody tr")  # 正しいテーブルを指定
+
+for row in rows:
+    cols = row.find_all("td")
+    if len(cols) >= 3:
+        name_tag = cols[1].find("a")
+        point_text = cols[2].get_text(strip=True).replace(",", "")
+        if name_tag:
+            member_name = name_tag.get_text(strip=True)
+            try:
+                point = float(point_text)
+            except ValueError:
+                point = 0.0
+            earnings_gr[member_name] = point
             
 # --- 6. グループごとのポイント（賞金）を集計 ---
 group_totals = {}
@@ -53,7 +70,7 @@ for group_name, members in GROUPS.items():
 # --- 6-1. グループ枠ごとのポイント（賞金）を集計 ---
 groups_totals = {}
 for group_name, members in TEAMS.items():
-    total = sum(earnings.get(member, 0) for member in members)
+    total = sum(earnings_gr.get(member, 0) for member in members)
     groups_totals[group_name] = total
     
 # --- 7. 結果を整形 ---
@@ -72,7 +89,7 @@ result_text = "\n".join(result_lines)
 result_gr_lines = [f"\n【🐶 グループ枠ポイントランキング】"]
 for group, total in sorted(groups_totals.items(), key=lambda x: x[1], reverse=True):
     result_gr_lines.append(f"{group}: {total:,.0f} pt")
-result_gr_text = "\n".join([result_text,result_gr_lines])
+result_gr_text = result_text + "\n" + "\n".join(result_gr_lines)
 
 
 # --- 8. Discord通知 ---
